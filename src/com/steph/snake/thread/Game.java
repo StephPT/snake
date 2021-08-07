@@ -23,7 +23,7 @@ public class Game extends Loop {
     @Override
     protected void process() {
         grid.updateCell(snake.getHead().getX(), snake.getHead().getY(), Grid.SNAKE_COLOUR);
-        apple.update();
+        apple.update(snake);
         apple.apply();
         while(isRunning()) {
             try {
@@ -32,7 +32,7 @@ public class Game extends Loop {
                 if(snake.tick(updated)) {
                     throw new GameOverException();
                 }
-                Thread.sleep(150);
+                Thread.sleep(25);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(-1);

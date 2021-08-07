@@ -41,9 +41,14 @@ public class Apple {
         this.x = x;
     }
 
-    public void update() {
+    public void update(Snake snake) {
         this.x = ran.nextInt(39);
         this.y = ran.nextInt(39);
+        for(int i = 1; i != snake.getPieces().size(); i++) {
+            if(snake.getPieces().get(i).getY() == y && snake.getPieces().get(i).getX() == x) {
+                update(snake);
+            }
+        }
     }
 
     public void apply() {

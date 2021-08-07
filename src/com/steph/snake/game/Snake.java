@@ -100,7 +100,7 @@ public class Snake {
             }
 
             if(getHead().getX() == apple.getX() && getHead().getY() == apple.getY()) {
-                apple.update();
+                apple.update(this);
                 apple.apply();
                 pieces.add(getNewLocation(getHead()));
             }
