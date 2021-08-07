@@ -17,6 +17,8 @@ public class Snake {
     
     private int direction = 3;
 
+    private int speed = 100;
+
     private final int x = 20;
 
     private final int y = 20;
@@ -78,6 +80,18 @@ public class Snake {
         pieces.set(0, updated);
     }
 
+    public void increaseSpeed() {
+        speed += 10;
+    }
+
+    public void decreaseSpeed() {
+        speed -= 10;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
     public boolean tick(Piece updated) {
         boolean result = false;
         for(int i = 1; i != pieces.size(); i++) {
@@ -89,6 +103,7 @@ public class Snake {
 
         if(!result) {
             Piece next = updated;
+            Piece last = pieces.get(pieces.size() - 1);
             for(int i = 0; i < pieces.size(); i++) {
                 grid.updateCell(next.getX(), next.getY(), Grid.SNAKE_COLOUR);
                 Piece u = new Piece();
@@ -102,7 +117,7 @@ public class Snake {
             if(getHead().getX() == apple.getX() && getHead().getY() == apple.getY()) {
                 apple.update(this);
                 apple.apply();
-                pieces.add(getNewLocation(getHead()));
+                pieces.add(last);
             }
         }
         return result;

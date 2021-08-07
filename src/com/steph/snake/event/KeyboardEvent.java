@@ -28,5 +28,11 @@ public class KeyboardEvent extends KeyAdapter {
         if(key == KeyEvent.VK_RIGHT && snake.getDirection() != Snake.LEFT) {
             snake.right();
         }
+        if(key == KeyEvent.VK_PLUS) {
+            snake.increaseSpeed();
+        }
+        if(key == KeyEvent.VK_MINUS) {
+            snake.decreaseSpeed();
+        }
     }
 }

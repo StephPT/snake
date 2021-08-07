@@ -32,7 +32,7 @@ public class Game extends Loop {
                 if(snake.tick(updated)) {
                     throw new GameOverException();
                 }
-                Thread.sleep(25);
+                Thread.sleep(snake.getSpeed());
             } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(-1);
